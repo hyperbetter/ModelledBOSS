@@ -8,7 +8,12 @@ import {
   WhiteSpace,
   Radio
 } from 'antd-mobile'
+import {Redirect} from 'react-router-dom'
+import {connect} from 'react-redux'
+
 import Logo from '../../components/logo/logo'
+import {register} from '../../redux/actions'
+
 
 const ListItem = List.Item
 
@@ -22,7 +27,7 @@ class Register extends Component {
   }
 
   register = () => {
-
+    this.props.register(this.state)
   }
 
   toLogin = () => {
@@ -40,12 +45,18 @@ class Register extends Component {
 
   render() {
     const {type} = this.state
+    const {msg, redirectTo} = this.props.user
+    // 如果redirectTo有值，就需要重定向到指定的路由
+    if(redirectTo) {
+      return <Redirect to={redirectTo}/>
+    }
     return (
       <div>
         <NavBar>硅&nbsp;谷&nbsp;直&nbsp;聘</NavBar>
         <Logo/>
         <WingBlank>
           <List>
+            {msg ? <div className='error-msg'>{msg}</div> : null}
             <WhiteSpace/>
             <InputItem placeholder='请输入用户名' onChange={val => {this.handleChange('username' , val)}}>用户名</InputItem>
             <WhiteSpace/>
@@ -70,4 +81,7 @@ class Register extends Component {
   }
 }
 
-export default Register;
+export default connect(
+  state => ({user: state.user}),
+  {register}
+)(Register)
