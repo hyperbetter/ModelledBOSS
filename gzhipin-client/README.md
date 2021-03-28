@@ -81,3 +81,13 @@
   "proxy": "http://localhost:4000"         
 ```
 代理将3000端口的请求转发给了4000端口，又将4000端口的响应数据返回给了3000端口
+
+10. 其他
+* 在actions.js中使用dispatch(action)方法，它可以触发reducers的调用
+* react-redux：UI组件和容器组件：
+  Provider：让所有组件都可以得到state数据
+  connect(用于包装 UI 组件生成容器组件)
+
+11. 引入图片(webpack打包不仅支持ES6，还支持commonjs)
+  require(`./images/头像${i+1}.png`)
+

@@ -23,11 +23,12 @@ export const register = (user) => {
     promise.then(response => {
       const result = response.data  // {code: 0/1, data: user, msg: ''}
     })*/
-    // 用async和await比promise更方便
+    // 用async和await比promise更方便（同步）
     const response = await reqRegister({username, password, type})
     const result = response.data
     if(result.code===0) {
       // 分发授权成功的同步action
+      // dispatch分发的就是action 它会触发reducers的调用
       dispatch(authSuccess(result.data))
     } else {
       // 分发错误提示信息的同步action

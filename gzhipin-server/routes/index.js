@@ -6,7 +6,7 @@ const md5 = require('blueimp-md5')
 // const {UserModel} = require('../db/models')
 // console.log(UserModel); // undefined
 const UserModel = require('../db/models').UsreModel
-// 查询时过滤出指定的属性（这样得到的数据就不会有password和__v了）
+// 查询时过滤出指定的属性（这样前台得到的数据就不会有password和__v了）
 const filter = {password:0, __v:0}
 
 /* GET home page. */
@@ -22,6 +22,7 @@ router.post('/register', function(req, res) {
   // 查询（根据username）
   UserModel.findOne({username}, function(err, user) {
     if(user) {
+      // code为1表示失败 0表示成功
       res.send({code:1, msg:'此用户已存在'})
     } else {
       new UserModel({username, type, password:md5(password)}).save(function (err ,user) {

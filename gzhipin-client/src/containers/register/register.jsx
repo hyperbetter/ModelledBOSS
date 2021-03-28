@@ -35,7 +35,7 @@ class Register extends Component {
   }
 
   // 处理输入数据：更新对应的状态
-  handleChange = (name , val) => {
+  handleChange = (name, val) => {
     this.setState({
       // 属性名不是name，而是name的值
       // 如果不加中括号 就是name了
