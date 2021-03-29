@@ -91,3 +91,6 @@
 11. 引入图片(webpack打包不仅支持ES6，还支持commonjs)
   require(`./images/头像${i+1}.png`)
 
+12. 操作前端的cookie
+npm i --save js-cookie
+
