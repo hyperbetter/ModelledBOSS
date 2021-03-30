@@ -94,3 +94,15 @@
 12. 操作前端的cookie
 npm i --save js-cookie
 
+13. 退出登录
+  使用Modal来调出提示框信息
+
+14. 不足的地方：如果用户存在没有信息完善的情况 可能会报错（报找不到图片的错误）
+```javascript
+  <Header thumb={require(`../../assets/images/${user.header}.png`)} extra={user.username}/>
+```
+修改之后就不会报错了
+```javascript
+// 原来用户没有完善头像 则自动使用默认头像0
+  {user.header ? <Header thumb={require(`../../assets/images/${user.header}.png`)} extra={user.username}/> : <Header thumb={require(`../../assets/images/头像0.png`)}  extra={user.username}/>}
+```

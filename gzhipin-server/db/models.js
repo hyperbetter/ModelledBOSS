@@ -3,7 +3,7 @@
 // 1.1 引入mongoose
 const mongoose = require('mongoose')
 // 1.2 连接指定数据库
-mongoose.connect('mongodb://localhost:27017/gzhipin2')
+mongoose.connect('mongodb://localhost:27017/gzhipin')
 // 1.3 获取连接对象
 const conn = mongoose.connection
 // 1.4 绑定连接完成的监听
