@@ -106,3 +106,21 @@ npm i --save js-cookie
 // 原来用户没有完善头像 则自动使用默认头像0
   {user.header ? <Header thumb={require(`../../assets/images/${user.header}.png`)} extra={user.username}/> : <Header thumb={require(`../../assets/images/头像0.png`)}  extra={user.username}/>}
 ```
+
+15. 前台和后台都需要下载socket.io
+  npm i socket.io@2.1.0 --save
+* socket.io 是一个能实现多人远程实时通信(聊天)的库
+* 它包装的是H5 WebSocket 和轮询, 如果是较新的浏览器内部使用WebSocket，如果浏览器不支持, 那内部就会使用轮询实现实时通信
+* 包含2个包:
+    socket.io: 用于服务器端
+    socket.io-client: 用于客户端
+* 基本思想: 远程自定义事件机制
+  on(name, function(data){}): 绑定监听
+  emit(name, data): 发送消息
+* io: 服务器端核心的管理对象
+  socket: 客户端与服务器的连接对象
+* 在服务器端的./bin/www 中需要引入
+  require('../socketIO/test')(server)
+
+16. 添加聊天的页面的动画效果
+npm i rc-queue-anim@1.5.0 --save
