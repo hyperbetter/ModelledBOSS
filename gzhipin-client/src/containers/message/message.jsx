@@ -78,7 +78,7 @@ class Message extends Component {
               <Item
                 key={msg._id}
                 extra={<Badge text={msg.unReadCount}/>}
-                thumb={targetUser.header ? require(`../../assets/images/${targetUser.header}.png`) : null}
+                thumb={targetUser.header ? require(`../../assets/images/${targetUser.header}.png`) : require(`../../assets/images/头像0.png`)}
                 arrow='horizontal'
                 onClick={() => this.props.history.push(`/chat/${targetUserId}`)}
               >

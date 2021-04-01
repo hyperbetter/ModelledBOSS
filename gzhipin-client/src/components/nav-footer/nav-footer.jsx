@@ -10,11 +10,13 @@ const Item = TabBar.Item
 class NavFooter extends Component {
 
   static propTypes = {
-    navList: PropTypes.array.isRequired
+    navList: PropTypes.array.isRequired,
+    // 通过main.jsx来引用unReadCount（因为main调用了nav-footer，这样就可以在不变成容器组件的情况下使用reducer中的chat的属性
+    unReadCount: PropTypes.number.isRequired
   }
 
   render () {
-    let {navList} = this.props
+    let {navList, unReadCount} = this.props
     // 过滤掉hide为true的nav
     navList = navList.filter(nav => !nav.hide)
     const path = this.props.location.pathname // 请求的path
@@ -23,6 +25,7 @@ class NavFooter extends Component {
         {
           navList.map((nav) => (
             <Item key={nav.path}
+                  badge={nav.path==='/message' ? unReadCount : 0}
                   title={nav.text}
                   icon={{uri: require(`./images/${nav.icon}.png`)}}
                   selectedIcon={{uri: require(`./images/${nav.icon}-selected.png`)}}

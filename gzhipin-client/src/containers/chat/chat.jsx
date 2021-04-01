@@ -130,9 +130,7 @@ class Chat extends Component {
               })
             }
           </QueueAnim>
-
         </List>
-
         <div className='am-tab-bar'>
           <InputItem
             placeholder="请输入"
