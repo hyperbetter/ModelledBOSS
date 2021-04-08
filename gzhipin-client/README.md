@@ -65,7 +65,7 @@
 ```
   npm i --save react-router-dom@4.2.2
 ```
-将Main.jsx设置为默认组件(即不为其设置path，而register.jsx和login.jsx要设置)
+将main.jsx设置为默认组件(即不为其设置path，而register.jsx和login.jsx要设置)
 
 7. 引入redux
 ```

@@ -1,6 +1,6 @@
 /*
-对话聊天的路由组件
- */
+  对话聊天的路由组件
+*/
 
 import React, {Component} from 'react'
 import {NavBar, List, InputItem, Grid, Icon} from 'antd-mobile'
@@ -50,6 +50,7 @@ class Chat extends Component {
   toggleShow = () => {
     const isShow = !this.state.isShow
     this.setState({isShow})
+    // bug：表情没有正常显示，只显示了一部分
     if(isShow) {
       // 异步手动派发resize事件,解决表情列表显示的bug
       setTimeout(() => {
@@ -89,6 +90,9 @@ class Chat extends Component {
     // 对chatMsgs进行过滤
     const msgs = chatMsgs.filter(msg => msg.chat_id===chatId)
 
+    // 得到发送用户的header图片对象(头像)
+    const meHeader = users[meId].header
+    const meIcon = meHeader ? require(`../../assets/images/${meHeader}.png`) : require(`../../assets/images/头像0.png`)
     // 得到目标用户的header图片对象(头像)
     const targetHeader = users[targetId].header
     const targetIcon = targetHeader ? require(`../../assets/images/${targetHeader}.png`) : require(`../../assets/images/头像0.png`)
@@ -121,7 +125,7 @@ class Chat extends Component {
                     <Item
                       key={msg._id}
                       className='chat-me'
-                      extra='我'
+                      extra={<img src={meIcon}/>}
                     >
                       {msg.content}
                     </Item>
@@ -148,14 +152,16 @@ class Chat extends Component {
             <Grid
               data={this.emojis}
               columnNum={8}
+              // 如果是跑马灯, 一页跑马灯需要展示的行数（类似于轮播图）
               carouselMaxRow={4}
+              // 是否跑马灯
               isCarousel={true}
               onClick={(item) => {
+                // 内容加表情包
                 this.setState({content: this.state.content + item.text})
               }}
             />
           ) : null}
-
         </div>
       </div>
     )

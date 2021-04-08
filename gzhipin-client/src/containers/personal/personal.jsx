@@ -26,12 +26,23 @@ class Personal extends React.Component {
     ])
   }
 
+  updateInfo = () => {
+    const {type} = this.props.user
+    if(type==='laoban') {
+      this.props.history.push('/laobaninfoupdate')
+    } else {
+      this.props.history.push('/dasheninfoupdate')
+    }
+    
+  }
+
   render() {
     const {username, info, header, company, post, salary} = this.props.user
     return (
       <div style={{marginBottom:50, marginTop:50}}>
         <Result
-          img={<img src={require(`../../assets/images/${header}.png`)} style={{width: 50}} alt="header"/>}
+          img={<img src={header ? require(`../../assets/images/${header}.png`) : require(`../../assets/images/头像0.png`)}
+          style={{width: 50}} alt="header"/>}
           title={username}
           message={company}
         />
@@ -45,6 +56,8 @@ class Personal extends React.Component {
         </List>
         <WhiteSpace/>
         <List>
+          <Button type='primary' onClick={this.updateInfo}>修改个人信息</Button>
+          <WhiteSpace/>
           <Button type='warning' onClick={this.logout}>退出登录</Button>
         </List>
       </div>

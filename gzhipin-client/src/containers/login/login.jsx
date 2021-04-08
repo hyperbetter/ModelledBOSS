@@ -25,7 +25,7 @@ class Login extends Component {
   }
 
   toRegister= () => {
-    this.props.history.replace('./register')
+    this.props.history.replace('/register')
   }
 
   // 处理输入数据：更新对应的状态

@@ -15,7 +15,7 @@ export default function ajax(url, data={}, type='GET') { // 地址 请求参数 
     })
     // 截去最后一个多余的&
     if(paramStr) {
-      // substring(start,end) 方法用于提取字符串中介于两个指定下标之间的字符，包含start，不包含end(不是必须的)
+      // substring(start,end) 方法用于 提取 字符串中介于两个指定下标之间的字符，包含start，不包含end(不是必须的)
       paramStr = paramStr.substring(0, paramStr.length-1)
     }
     // 使用axios发get请求

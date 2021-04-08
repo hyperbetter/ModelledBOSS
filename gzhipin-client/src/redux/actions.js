@@ -19,7 +19,6 @@ import {
   RECEIVE_MSG,
   MSG_READ
 } from './action-types'
-
 /*
   单例对象
   1. 创建对象之前: 判断对象是否已经存在, 只有不存在才去创建
@@ -102,6 +101,8 @@ export const register = (user) => {
   // 表单前台验证 如果不通过，则return一个errorMsg的同步的action
   if(!username) {
     return errorMsg('用户名不能为空！')
+  } else if(!password) {
+    return errorMsg('密码不能为空！')
   } else if(password!==password2) {
     return errorMsg('密码和确认密码不一致！')
   }

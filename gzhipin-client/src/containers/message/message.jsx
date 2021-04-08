@@ -17,7 +17,6 @@ function getLastMsgs(chatMsgs, userid) {
   // 1. 找出每个聊天的lastMsg, 并用一个对象容器来保存 {chat_id:lastMsg}
   const lastMsgObjs = {}
   chatMsgs.forEach(msg => {
-
     // 对msg进行个体的统计
     if(msg.to===userid && !msg.read) {
       msg.unReadCount = 1
@@ -51,7 +50,7 @@ function getLastMsgs(chatMsgs, userid) {
   lastMsgs.sort(function (m1, m2) { // 如果结果<0, 将m1放在前面, 如果结果为0, 不变, 如果结果>0, m2前面
     return m2.create_time-m1.create_time
   })
-  console.log(lastMsgs)
+  // console.log(lastMsgs)
   return lastMsgs
 }
 
@@ -67,7 +66,6 @@ class Message extends Component {
 
     return (
       <List style={{marginTop:50, marginBottom: 50}}>
-
         {
           lastMsgs.map(msg =>{
             // 得到目标用户的id
@@ -77,12 +75,16 @@ class Message extends Component {
             return (
               <Item
                 key={msg._id}
+                // 右边内容 存放未读数量的徽标数
                 extra={<Badge text={msg.unReadCount}/>}
+                // 缩略图 如果是string类型，则相当于img的src
                 thumb={targetUser.header ? require(`../../assets/images/${targetUser.header}.png`) : require(`../../assets/images/头像0.png`)}
+                // 箭头方向：horizontal、up、down、empty 分别相当于右、上、下、空
                 arrow='horizontal'
                 onClick={() => this.props.history.push(`/chat/${targetUserId}`)}
               >
                 {msg.content}
+                {/* 辅助说明 */}
                 <Brief>{targetUser.username}</Brief>
               </Item>
             )

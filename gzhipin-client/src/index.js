@@ -23,7 +23,7 @@ ReactDOM.render(
           {/* 默认组件 当不请求上面的url时，就显示Main组件 */}
           <Route component={Main}></Route>
         </Switch>
-    </HashRouter>
+      </HashRouter>
     </Provider>
   ) , document.getElementById('root')
 )

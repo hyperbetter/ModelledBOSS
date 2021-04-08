@@ -115,8 +115,8 @@ router.get('/userlist', function(req, res) {
 })
 
 /*
-获取当前用户所有相关聊天信息列表
- */
+  获取当前用户所有相关聊天信息列表
+*/
 router.get('/msglist', function (req, res) {
   // 获取cookie中的userid
   const userid = req.cookies.userid
@@ -146,8 +146,8 @@ router.get('/msglist', function (req, res) {
 })
 
 /*
-修改指定消息为已读
- */
+  修改指定消息为已读
+*/
 router.post('/readmsg', function (req, res) {
   // 得到请求中的from和to
   const from = req.body.from

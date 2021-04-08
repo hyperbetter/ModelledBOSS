@@ -18,6 +18,7 @@ import {register} from '../../redux/actions'
 const ListItem = List.Item
 
 class Register extends Component {
+
   state = {
     // 用户名、密码、确认密码、用户角色(dashen/laoban)
     username: '', 
@@ -31,7 +32,7 @@ class Register extends Component {
   }
 
   toLogin = () => {
-    this.props.history.replace('./login')
+    this.props.history.replace('/login')
   }
 
   // 处理输入数据：更新对应的状态
@@ -57,6 +58,7 @@ class Register extends Component {
         <WingBlank>
           <List>
             {msg ? <div className='error-msg'>{msg}</div> : null}
+            {/* {msg ? Toast.info(msg, 1) : null} */}
             <WhiteSpace/>
             <InputItem placeholder='请输入用户名' onChange={val => {this.handleChange('username' , val)}}>用户名</InputItem>
             <WhiteSpace/>
@@ -83,5 +85,6 @@ class Register extends Component {
 
 export default connect(
   state => ({user: state.user}),
+  // 从actions.jsx中获得
   {register}
 )(Register)

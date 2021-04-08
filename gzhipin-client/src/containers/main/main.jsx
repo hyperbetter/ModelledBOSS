@@ -7,6 +7,8 @@ import NavFooter from '../../components/nav-footer/nav-footer';
 
 import DashenInfo from '../dashen-info/dashen-info'
 import LaobanInfo from '../laoban-info/laoban-info'
+import LaobanInfoUpdate from '../laoban-info-update/laoban-info-update'
+import DashenInfoUpdate from '../dashen-info-update/dashen-info-update'
 import Dashen from '../dashen/dashen'
 import Laoban from '../laoban/laoban'
 import Message from '../message/message';
@@ -52,7 +54,7 @@ class Main extends Component {
   componentDidMount () {
     const userid = Cookies.get('userid')
     const {_id} = this.props.user
-    // 登陆过(cookie中有userid), 但没有有登陆(redux管理的user中没有_id) 发请求获取对应的user --实现自动登陆
+    // 登陆过(cookie中有userid), 但还没有登陆(redux管理的user中没有_id) 发请求获取对应的user --实现自动登陆
     if(userid && !_id) {
       // 发送异步请求，获取user
       // console.log('发送ajax请求获取user');
@@ -109,6 +111,8 @@ class Main extends Component {
           }
           <Route path='/laobaninfo' component={LaobanInfo}/>
           <Route path='/dasheninfo' component={DashenInfo}/>
+          <Route path='/laobaninfoupdate' component={LaobanInfoUpdate}/>
+          <Route path='/dasheninfoupdate' component={DashenInfoUpdate}/>
           <Route path='/chat/:userid' component={Chat}/>
           <Route component={NotFound}/>
         </Switch>
