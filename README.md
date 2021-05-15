@@ -6,7 +6,7 @@
 * $ git init
 * $ git clone https://github.com/hyperbetter/modelledBoss.git
 * $ npm install
-* 或者
+#### 或者
 * $ git init
 * $ git clone git@github.com:hyperbetter/modelledBoss.git
 * $ npm install
@@ -14,7 +14,7 @@
 $ npm start
 服务器默认端口是5000，客户端默认端口是3000
 ## 功能简介
-* 1.用户注册/登录功能
-* 2.好友列表
-* 3.消息列表
-* 4.用户中心
+* 用户注册/登录功能
+* 好友列表
+* 消息列表
+* 用户中心
